@@ -15,7 +15,8 @@ METRICS_PATH = "output/results/metrics.json"
 os.makedirs("output/model", exist_ok=True)
 os.makedirs("output/results", exist_ok=True)
 
-data = pd.read_csv(DATA_PATH)
+data = pd.read_csv(DATA_PATH, sep=";")
+data.columns = data.columns.str.strip()
 
 X = data.drop("quality", axis=1)
 y = data["quality"]
